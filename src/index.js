@@ -1,4 +1,4 @@
-import bindAttribute from './instance/bindAttribute.js'
+import { bindAttribute } from './instance/bindAttribute.js'
 
 function jDialog (options) {
   if (process.env.NODE_ENV !== 'production' &&

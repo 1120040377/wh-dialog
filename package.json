@@ -4,7 +4,8 @@
   "description": "一个移动端弹窗组件",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config build/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/1120040377/wh-dialog#readme",
   "devDependencies": {
-    "webpack": "^4.14.0"
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8"
   }
 }
