@@ -1,22 +1,21 @@
-function $ (selector) {
-    return document.querySelectorAll(selector);
+export function $(selector) {
+    let oNode;
+    if (/<[^>]+>/g.test(selector)) {
+    // 如果是HTML
+        let oDiv = document.createElement('div')
+        oDiv.innerHTML = selector
+        oNode = oDiv.firstChild;
+    } else {
+        oNode = document.querySelectorAll(selector);
+    }
+    return oNode;
 }
 
-// 封装DOM操作相关方法
-Object.assign($.prototype, {
-    // 简易模板引擎，生成HTML
-    render(tpl, data) {
-        var code = `\`${tpl.replace(/[\r\t\n]/g, ' ').replace(/{(.*?)}/g, '${data.$1}')}\``;
-        return eval(code);
-    },
-})
-
-
-// 封装其它工具方法
-Object.assign($.prototype, {
-
-})
-
+// 简易模板引擎，生成HTML
+export function render(tpl, data) {
+    var code = `\`${tpl.replace(/[\r\t\n]/g, ' ').replace(/{(.*?)}/g, '${data.$1}')}\``;
+    return eval(code);
+}
 
 // 获取数据类型
 export function getDataType (data) {
@@ -42,5 +41,3 @@ export function isNumber(data) {
 export function isFunction(data) {
     return getDataType(data) === 'Function'
 }
-
-export function $;

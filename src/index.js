@@ -1,4 +1,5 @@
-import { bindAttribute } from './instance/bindAttribute.js'
+import { bindProperty } from '@/instance/bindProperty'
+import { addMethods } from '@/template'
 
 function jDialog (options) {
   if (process.env.NODE_ENV !== 'production' &&
@@ -9,6 +10,7 @@ function jDialog (options) {
   this._init(options)
 }
 
-bindAttribute(jDialog)
+bindProperty(jDialog)
+addMethods(jDialog)
 
 export default jDialog
