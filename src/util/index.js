@@ -32,12 +32,17 @@ export function isArray(data) {
     return getDataType(data) === 'Array'
 }
 
-// 判断是否为数组
+// 判断是否为数字
 export function isNumber(data) {
     return getDataType(data) === 'Number'
 }
 
-// 判断是否为数组
+// 判断是否为字符串
+export function isString(data) {
+    return getDataType(data) === 'String'
+}
+
+// 判断是否为函数
 export function isFunction(data) {
     return getDataType(data) === 'Function'
 }

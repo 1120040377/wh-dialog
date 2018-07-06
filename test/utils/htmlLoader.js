@@ -1,6 +1,6 @@
 /*
  * File: htmlLoader.js
- * Project: wh-dialog
+ * Project: jdialog
  * File Created: Thursday, 5th July 2018 11:43:29 pm
  * Author: joe (1120040377@qq.com)
  * Desc: 用于jest中加载html文件

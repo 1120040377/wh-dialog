@@ -1,0 +1,12 @@
+.jdialog-toast{
+    display: flex;
+    align-items: center;
+    padding: 0 .8em;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    color: #FFF;
+    background: rgba(0, 0, 0, .7);
+    border-radius: .3em;
+    transform: translate(-50%, -50%);
+}

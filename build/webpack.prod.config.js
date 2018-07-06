@@ -1,8 +1,9 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-console.log(path.resolve('../dist'));
-function resolve (dir) {
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+function resolve (dir = '') {
   return path.join(__dirname, '..', dir)
 }
 module.exports = {
@@ -34,6 +35,28 @@ module.exports = {
         test: /\.html$/,
         exclude: /node_modules/,
         loader: 'html-loader'
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /node_modules/,
+        loader: 'style-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          // { loader: "style-loader" }, styleloader和上面的取一个
+          { loader: "css-loader" },
+          { 
+            loader: "postcss-loader",
+            options: {
+              config: {
+                  path: resolve('postcss.config.js'),
+              }
+            } 
+          },
+          { loader: "sass-loader" },
+        ]
       }
     ]
   },
@@ -51,6 +74,10 @@ module.exports = {
       title: 'jDialog',
       filename: 'index.html',
       template: path.resolve(__dirname, '../index.html')
-    })
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css'
+    }),
   ]
 };

@@ -1,6 +1,6 @@
 /*
  * File: index.test.js
- * Project: wh-dialog
+ * Project: jdialog
  * File Created: Thursday, 5th July 2018 11:30:14 pm
  * Author: joe (1120040377@qq.com)
  * Desc: 测试导入方法

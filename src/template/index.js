@@ -9,6 +9,6 @@ export function addMethods(jDialog) {
         if (jDialog.prototype[attr]) {
             throw new Error('发现相同方法：', attr)
         }
-        jDialog.prototype[attr] = methods[attr];
+        jDialog.prototype[attr] = methods[attr]
     })
 }
