@@ -19,18 +19,18 @@ function toast(content, options = {}) {
         oDom = $.render(tpl, opt);
 
     // 初始时移除上一次的弹窗
-    oBody.remove($('.jdialog'))
+    $('.jdialog').remove()
 
     // 将新生成的DOM添加到页面中
     oBody.append(oDom);
     oDom.addClass('fadeIn');
 
     setTimeout(() => {
-        oDom.replaceClass('fadeIn', 'fadeOut')
-        oDom.on('animationend webkitAnimationEnd', () => {
-            oBody.remove(oDom)
-        })
-        // oBody.remove(oDom)
+        oDom
+          .replaceClass('fadeIn', 'fadeOut')
+          .on('animationend webkitAnimationEnd', () => {
+            oDom.remove()
+          })
     }, opt.duration)
 }
 

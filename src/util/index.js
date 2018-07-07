@@ -32,36 +32,42 @@ $.prototype = {
         oDom.each((item) => {
             this[0].appendChild(item)
         })
+        return this
     },
     // 移除当前节点的某个子节点
-    remove(oDom) {
-        oDom.each((item) => {
-            this[0].removeChild(item)
+    remove() {
+        this.each((item) => {
+            item.parentNode.removeChild(item)
         })
+        return this
     },
     // 遍历数组和伪数组
     each(fn) {
         Array.from(this).forEach((item, index) => {
             fn(item, index)
         })
+        return this
     },
     // 添加样式
     addClass(className) {
         this.each((item) => {
             item.classList.add(className)
         })
+        return this
     },
     // 移除样式
     removeClass(className) {
         this.each((item) => {
             item.classList.remove(className)
         })
+        return this
     },
     // 替换样式
     replaceClass(a, b) {
         this.each((item) => {
             item.classList.replace(a, b)
         })
+        return this
     },
     // 监听事件
     on(eventName, cb) {
