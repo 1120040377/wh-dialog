@@ -1,15 +1,96 @@
 export function $(selector) {
-    let oNode;
-    if (/<[^>]+>/g.test(selector)) {
-    // 如果是HTML
-        let oDiv = document.createElement('div')
-        oDiv.innerHTML = selector
-        oNode = oDiv.firstChild;
+    if (this instanceof $) {
+        let oNode;
+        if (/<[^>]+>/g.test(selector)) {
+        // 如果是HTML
+            let oDiv = document.createElement('div')
+            oDiv.innerHTML = selector
+            oNode = oDiv.firstChild;
+        } else {
+            oNode = document.querySelectorAll(selector);
+        }
+
+        // 如果节点有nodeType，说明是一个HTML节点，没有的话则是一个nodeList
+        if (oNode.nodeType) {
+            this[0] = oNode;
+            this.length = 1;
+        } else {
+            $.each(oNode, (node, index) => {
+                this[index] = node;
+            })
+            this.length = oNode.length;
+        }
+        return this;
     } else {
-        oNode = document.querySelectorAll(selector);
+        return new $(selector)
     }
-    return oNode;
 }
+
+$.prototype = {
+    // 给当前对象添加子元素
+    append(oDom) {
+        oDom.each((item) => {
+            this[0].appendChild(item)
+        })
+    },
+    // 移除当前节点的某个子节点
+    remove(oDom) {
+        oDom.each((item) => {
+            this[0].removeChild(item)
+        })
+    },
+    // 遍历数组和伪数组
+    each(fn) {
+        Array.from(this).forEach((item, index) => {
+            fn(item, index)
+        })
+    },
+    // 添加样式
+    addClass(className) {
+        this.each((item) => {
+            item.classList.add(className)
+        })
+    },
+    // 移除样式
+    removeClass(className) {
+        this.each((item) => {
+            item.classList.remove(className)
+        })
+    },
+    // 替换样式
+    replaceClass(a, b) {
+        this.each((item) => {
+            item.classList.replace(a, b)
+        })
+    },
+    // 监听事件
+    on(eventName, cb) {
+        const events = eventName.split(' ');
+        this.each((item) => {
+            events.forEach(event => item.addEventListener(event, cb))
+        })
+    }
+}
+
+// 静态方法，生成自定义nodeList
+$.render = function (tpl, data) {
+    return $(render(tpl, data))
+}
+
+// 遍历方法
+$.each = function (list, fn) {
+    Array.from(list).forEach((item, index) => {
+        fn(item, index)
+    })
+}
+
+// 添加静态方法
+$.getDataType = getDataType
+$.isObject = isObject
+$.isArray = isArray
+$.isNumber = isNumber
+$.isString = isString
+$.isFunction = isFunction
 
 // 简易模板引擎，生成HTML
 export function render(tpl, data) {

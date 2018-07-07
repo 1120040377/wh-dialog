@@ -1,11 +1,15 @@
+@import './common/transition'; // 过度动画
 @import './components/toast';
-body{
-    font-size: 12px;
+*{
+    margin: 0;
+    padding: 0;
 }
 
 .jdialog{
     position: fixed;
     left: -9999em;
+    animation-duration: .35s;
+    animation-fill-mode: both;
     &__mask{
         position: fixed;
         left: 0;

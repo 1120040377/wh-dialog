@@ -12,10 +12,18 @@
             dialog.toast({
                 className: 'wh'
             })
+
+            document.querySelector('#show-toast').addEventListener('click', () => {
+                dialog.toast({
+                    className: 'wh',
+                    content: 'wh-666',
+                    duration: 5000
+                })
+            })
         }
     </script>
 </head>
 <body>
-    
+    <button id="show-toast">展示弹窗</button>
 </body>
 </html>
