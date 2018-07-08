@@ -1,11 +1,6 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve (dir = '') {
-  return path.join(__dirname, '..', dir)
-}
 module.exports = {
   mode: 'development',
   entry: {
@@ -16,21 +11,16 @@ module.exports = {
     filename: '[name].js',
     library: 'jdialog',
     libraryTarget: 'umd',
-    libraryExport: "default"
+    libraryExport: 'default'
   },
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src')
     }
   },
   module: {
     rules: [
-      // {
-      //   test: /\.js?$/,
-      //   exclude: /node_modules/,
-      //   loader: 'babel'
-      // },
       {
         test: /\.html$/,
         exclude: /node_modules/,
@@ -44,9 +34,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "sass-loader" },
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }
         ]
       }
     ]
@@ -56,6 +46,6 @@ module.exports = {
       title: 'jDialog',
       filename: 'index.html',
       template: path.resolve(__dirname, '../index.html')
-    }),
+    })
   ]
-};
+}

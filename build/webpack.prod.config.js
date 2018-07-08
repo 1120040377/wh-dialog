@@ -1,6 +1,6 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 function resolve (dir = '') {
@@ -16,21 +16,21 @@ module.exports = {
     filename: '[name].js',
     library: 'jdialog',
     libraryTarget: 'umd',
-    libraryExport: "default"
+    libraryExport: 'default'
   },
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src')
     }
   },
   module: {
     rules: [
-      // {
-      //   test: /\.js?$/,
-      //   exclude: /node_modules/,
-      //   loader: 'babel'
-      // },
+      {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.html$/,
         exclude: /node_modules/,
@@ -46,16 +46,16 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           // { loader: "style-loader" }, styleloader和上面的取一个
-          { loader: "css-loader" },
-          { 
-            loader: "postcss-loader",
+          { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
             options: {
               config: {
-                  path: resolve('postcss.config.js'),
+                path: resolve('postcss.config.js')
               }
-            } 
+            }
           },
-          { loader: "sass-loader" },
+          { loader: 'sass-loader' }
         ]
       }
     ]
@@ -66,8 +66,8 @@ module.exports = {
      */
     new CleanWebpackPlugin(['dist', 'examples'], {
       root: path.resolve(__dirname, '..'),
-      verbose:  true,
-      dry:      false
+      verbose: true,
+      dry: false
     }),
 
     new HtmlWebpackPlugin({
@@ -78,6 +78,6 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
-    }),
+    })
   ]
-};
+}

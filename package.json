@@ -1,12 +1,26 @@
 {
-  "name": "wh-dialog",
+  "name": "jdialog",
   "version": "1.0.0",
   "description": "一个移动端弹窗组件",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config test/jest.config.js",
+    "fix": "standard --fix",
+    "test": "standard && jest --config test/jest.config.js --coverage",
+    "test-watch": "jest --watch --config test/jest.config.js",
     "dev": "webpack-dev-server --inline --progress --open --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.prod.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
+  },
+  "standard": {
+    "ignore": [
+      "build/",
+      "test/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -43,6 +57,7 @@
     "cssnano": "^4.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.12",
     "jest": "^23.3.0",
     "jest-serializer-html": "^5.0.0",
     "mini-css-extract-plugin": "^0.4.1",
@@ -50,6 +65,7 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.3",
+    "standard": "^11.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",

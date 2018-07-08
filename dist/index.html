@@ -8,10 +8,22 @@
     <script>
         window.onload = () => {
             console.log(jdialog);
+            var dialog = new jdialog();
+            dialog.toast({
+                className: 'wh'
+            })
+
+            document.querySelector('#show-toast').addEventListener('click', () => {
+                dialog.toast({
+                    className: 'wh',
+                    content: 'wh-666',
+                    duration: 5000
+                })
+            })
         }
     </script>
-<link href="css/jdialog.fa187f3b0b894eed0fc5.css" rel="stylesheet"></head>
+<link href="css/jdialog.cc8944226f0ca778e5b8.css" rel="stylesheet"></head>
 <body>
-    
+    <button id="show-toast">展示弹窗</button>
 <script type="text/javascript" src="jdialog.js"></script></body>
 </html>

@@ -14,11 +14,10 @@
  * Copyright 2018 - 2018 皮的不行
  */
 
-
-const htmlLoader = require('html-loader');
+const htmlLoader = require('html-loader')
 
 module.exports = {
-    process(src) {
-        return htmlLoader(src);
-    }
+  process (src) {
+    return htmlLoader(src)
+  }
 }

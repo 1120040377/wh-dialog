@@ -1,37 +1,37 @@
-import { $, isObject, isString } from '@/util'
+import { $ } from '@/util'
 import tpl from './toast.html'
 
-function toast(content, options = {}) {
-    // 判断如果是字符串，那么将值赋给options
-    if (isString(content)) {
-        options.content = content
-    }
-    // 合并配置
-    const opt = Object.assign({
-        className: 'j-dialog',
-        status: 'success',
-        content: '成功',
-        duration: 1600,
-    }, isObject(content) ? content : options)
+function toast (content, options = {}) {
+  // 判断如果是字符串，那么将值赋给options
+  if ($.isString(content)) {
+    options.content = content
+  }
+  // 合并配置
+  const opt = Object.assign({
+    className: 'j-dialog',
+    status: 'success',
+    content: '成功',
+    duration: 1600
+  }, $.isObject(content) ? content : options)
 
-    const 
-        oBody = $('body'),
-        oDom = $.render(tpl, opt);
+  const oBody = $('body')
+  const oDom = $.render(tpl, opt)
 
-    // 初始时移除上一次的弹窗
-    $('.jdialog').remove()
+  // 初始时移除上一次的弹窗
+  $('.jdialog').remove()
 
-    // 将新生成的DOM添加到页面中
-    oBody.append(oDom);
-    oDom.addClass('fadeIn');
+  // 将新生成的DOM添加到页面中
+  oBody.append(oDom)
+  oDom.addClass('fadeIn')
 
-    setTimeout(() => {
-        oDom
-          .replaceClass('fadeIn', 'fadeOut')
-          .on('animationend webkitAnimationEnd', () => {
-            oDom.remove()
-          })
-    }, opt.duration)
+  setTimeout(() => {
+    oDom
+      .replaceClass('fadeIn', 'fadeOut')
+      .on('animationend webkitAnimationEnd', () => {
+        oDom.remove()
+      })
+  }, opt.duration)
+  return oDom
 }
 
 export default toast
