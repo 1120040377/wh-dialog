@@ -67,7 +67,8 @@ $.prototype = {
   // 替换样式
   replaceClass (a, b) {
     this.each((item) => {
-      item[0].classList.replace(a, b)
+      item[0].classList.remove(a)
+      item[0].classList.add(b)
     })
     return this
   },
