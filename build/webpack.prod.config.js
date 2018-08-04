@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].js',
+    filename: '[name].min.js',
     library: 'jdialog',
     libraryTarget: 'umd',
     libraryExport: 'default'
@@ -77,7 +77,8 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css'
+      // filename: 'css/[name].[contenthash].css'
+      filename: '[name].min.css'
     })
   ]
 }

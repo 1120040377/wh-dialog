@@ -1,0 +1,52 @@
+.jdialog-dialog{
+  position: fixed;
+  background: #FFF;
+  border-radius: 0.2em;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22.5em;
+  &__bd{
+    padding: 2.14em;
+    font-size: 1.07em;
+    text-align: center;
+    &-title{
+      margin-bottom: 1.07em;
+      font-size: 1.28em;
+      text-align: center;
+    }
+    &-content{
+      line-height: 1.61em;
+    }
+  }
+  &__ft{
+    position: relative;
+    height: 3.93em;
+    display: flex;
+    &::before{
+      @extend %border-top;
+    }
+  }
+  &__btn{
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.14em;
+    
+    text-decoration: none;
+    & + &{
+      &::before{
+        @extend %border-left;
+      }
+    }
+
+    &_default{
+      color: $color-black;
+    }
+    &_primary{
+      color: $color-blue;
+    }
+  }
+}

@@ -6,6 +6,8 @@ export function $ (selector) {
       let oDiv = document.createElement('div')
       oDiv.innerHTML = selector
       oNode = oDiv.firstChild
+    } else if (selector && selector.nodeType === 1) {
+      oNode = selector
     } else {
       oNode = document.querySelectorAll(selector)
     }
@@ -30,42 +32,42 @@ $.prototype = {
   // 给当前对象添加子元素
   append (oDom) {
     oDom.each((item) => {
-      this[0].appendChild(item)
+      this[0].appendChild(item[0])
     })
     return this
   },
   // 移除当前节点的某个子节点
   remove () {
     this.each((item) => {
-      item.parentNode.removeChild(item)
+      item[0].parentNode.removeChild(item[0])
     })
     return this
   },
   // 遍历数组和伪数组
   each (fn) {
     Array.from(this).forEach((item, index) => {
-      fn(item, index)
+      fn($(item), index)
     })
     return this
   },
   // 添加样式
   addClass (className) {
     this.each((item) => {
-      item.classList.add(className)
+      item[0].classList.add(className)
     })
     return this
   },
   // 移除样式
   removeClass (className) {
     this.each((item) => {
-      item.classList.remove(className)
+      item[0].classList.remove(className)
     })
     return this
   },
   // 替换样式
   replaceClass (a, b) {
     this.each((item) => {
-      item.classList.replace(a, b)
+      item[0].classList.replace(a, b)
     })
     return this
   },
@@ -73,7 +75,7 @@ $.prototype = {
   on (eventName, cb) {
     const events = eventName.split(' ')
     this.each((item) => {
-      events.forEach(event => item.addEventListener(event, cb))
+      events.forEach(event => item[0].addEventListener(event, cb))
     })
   }
 }
@@ -97,11 +99,20 @@ $.isArray = isArray
 $.isNumber = isNumber
 $.isString = isString
 $.isFunction = isFunction
+$.noop = function () {}
 
 // 简易模板引擎，生成HTML
 export function render (tpl, data) {
-  var code = `\`${tpl.replace(/[\r\t\n]/g, ' ').replace(/{(.*?)}/g, '${data.$1}')}\``  // eslint-disable-line
-  return eval(code)  // eslint-disable-line
+  const code = 'var p=[];with(this){p.push(\'' +
+  tpl
+    .replace(/[\r\t\n]/g, ' ')
+    .split('<%').join('\t')
+    .replace(/((^|%>)[^\t]*)'/g, '$1\r')
+    .replace(/\t=(.*?)%>/g, '\',$1,\'')
+    .split('\t').join('\');')
+    .split('%>').join('p.push(\'')
+    .split('\r').join('\\\'') + '\');}return p.join(\'\');'
+  return new Function(code).apply(data) // eslint-disable-line
 }
 
 // 获取数据类型
