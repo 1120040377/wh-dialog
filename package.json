@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "fix": "standard --fix",
+    "lint": "standard",
     "test": "standard && jest --config test/jest.config.js --coverage",
     "test-watch": "jest --watch --config test/jest.config.js",
     "dev": "webpack-dev-server --inline --progress --open --config build/webpack.dev.config.js",
@@ -12,8 +13,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
     }
   },
   "standard": {
