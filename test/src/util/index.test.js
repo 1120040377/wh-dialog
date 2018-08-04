@@ -67,7 +67,7 @@ describe('$方法', () => {
 })
 
 describe('render', () => {
-  const tpl = '<div>{question}</div>'
+  const tpl = '<div><%= question %></div>'
   const data = { question: 'Aue you sure?' }
   expect(util.render(tpl, data).indexOf(data.question) > -1).toBeTruthy()
 })

@@ -25,3 +25,28 @@
 .fadeOut {
     animation-name: fadeOut;
 }
+
+
+@keyframes slideUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+  .slide-up {
+        animation: slideUp ease .3s forwards;
+  }
+  
+@keyframes slideDown {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+.slide-down {
+    animation: slideDown ease .3s forwards;
+}

@@ -1,0 +1,42 @@
+$color-blue: #318ff5;
+$color-gray: #e9e9e9;
+$color-black: #272b45;
+
+
+%border-left{
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: $color-gray;
+  transform: scaleX(0.5);
+}
+
+%border-right{
+  @extend %border-left;
+  left: auto;
+  right: 0;
+}
+
+%border-top{
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background: $color-gray;
+  transform: scaleY(0.5);
+}
+
+%border-bottom{
+  @extend %border-top;
+  top: auto;
+  bottom: 0;
+}
+
+
+
+

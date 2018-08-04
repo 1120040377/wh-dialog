@@ -6,10 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jDialog</title>
     <script>
+        (function (doc, win) {
+            let docEl = doc.documentElement
+            let resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+            let designSize = 750
+            let recalc = function () {
+                let clientWidth = docEl.clientWidth
+                if (!clientWidth) return
+                if (clientWidth >= designSize) {
+                    docEl.style.fontSize = '100px'
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / designSize) + 'px'
+                }
+                }
+
+            if (!doc.addEventListener) return
+            win.addEventListener(resizeEvt, recalc, false)
+            doc.addEventListener('DOMContentLoaded', recalc, false)
+        })(document, window)
+
+
+
         window.onload = () => {
+            
             console.log(jdialog);
             var dialog = new jdialog();
-            dialog.toast('成功')
+            // dialog.toast('成功')
+            // dialog.dialog({
+            //     title: '标题呀',
+            //     content: '你们好吗取消订单？是本次的阿卡时间哈萨克京东方？阿卡就是电话卡时间划分空间，奥斯卡大家哈萨克东方嘉盛?',
+            //     buttons: [
+            //         {
+            //             label: '取消',
+            //             type: 'default',
+            //             onClick () {}
+            //         },
+            //         {
+            //             label: '确定',
+            //             type: 'primary',
+            //             onClick () {}
+            //         }
+            //     ],
+            //     icon: {
+            //         name: 'baoguo',
+            //         size: '100px',
+            //         color: 'black',
+            //     }
+            // })
 
             document.querySelector('#show-toast').addEventListener('click', () => {
                 dialog.toast({
@@ -19,12 +62,114 @@
                 })
             })
 
-            document.querySelector('#show-toast').addEventListener('click', () => {
-                dialog.confirm({
+            document.querySelector('#show-icontoast').addEventListener('click', () => {
+                dialog.toast({
                     className: 'wh',
                     content: 'wh-666',
-                    duration: 1000
+                    icon: {
+                        name: 'baoguo',
+                        size: '20px',
+                        color: 'rgb(0,200,100)',
+                    }
                 })
+            })
+
+            document.querySelector('#show-alert').addEventListener('click', () => {
+                dialog.alert('这是一个alert', () => {
+                    alert('点击确认')
+                })
+            })
+
+            document.querySelector('#show-iconalert').addEventListener('click', () => {
+                dialog.alert('带图标的alert', {
+                    icon: {
+                        name: 'baoguo',
+                        size: '1.5rem',
+                        color: 'rgb(0,200,100)',
+                    }
+                })
+            })
+
+            document.querySelector('#show-closealert').addEventListener('click', () => {
+                var $alert = dialog.alert('带图标的alert', {
+                    icon: {
+                        name: 'baoguo',
+                        size: '1.5rem',
+                        color: 'rgb(0,200,100)',
+                    }
+                })
+
+                setTimeout(() => {
+                    $alert.hide(() => {
+                        alert('主动关闭了')
+                    })
+                }, 1000)
+            })
+
+            document.querySelector('#show-confirm').addEventListener('click', () => {
+                dialog.confirm('是否确认',() => {
+                    alert('确认了')
+                }, () => {
+                    alert('取消了')
+                })
+            })
+
+            document.querySelector('#show-iconconfirm').addEventListener('click', () => {
+                dialog.confirm('好了没', {
+                    icon: {
+                        name: 'baoguo',
+                        size: '50px',
+                        color: 'rgba(100, 200, 0, .2)',
+                    }
+                })
+            })
+
+            document.querySelector('#show-actionSheet').addEventListener('click', () => {
+                dialog.actionSheet([{
+                    label: '拍照',
+                    onClick: function () {
+                        console.log('拍照');
+                    }
+                },{
+                    label: '从相册选择',
+                    onClick: function () {
+                        console.log('从相册选择');
+                    }
+                }], [{
+                    label: '取消',
+                    onClick: function () {
+                        console.log('取消');
+                    }
+                }],{
+                    className: 'custom-classname',
+                    onClose: function(){
+                        console.log('关闭')
+                    }
+                })
+            })
+
+            document.querySelector('#show-titleActionSheet').addEventListener('click', () => {
+                dialog.actionSheet([
+                    {
+                        label: '呼叫',
+                        onClick: () => {
+                        console.log('呼叫');
+                        }
+                    }
+                ], [
+                    {
+                        label: '取消',
+                        onClick: () => {
+                        console.log('取消');
+                        }
+                    }
+                ], {
+                    title: '10086',
+                    className: 'my-class',
+                    onClose: () => {
+                        console.log('关闭');
+                    }
+                });
             })
         }
     </script>
@@ -33,11 +178,14 @@
             margin: 0;
             padding: 0;
         }
+        body{
+            font-size: 0.28rem;
+        }
         button{
             outline: none;
         }
         .container{
-            padding: 30px;
+            padding: .6rem;
             display: flex;
             flex-direction: column;
         }
@@ -47,10 +195,10 @@
             color: #3185f2;
             text-align: center;
             width: 100%;
-            height: 36px;
-            line-height: 28px;
-            margin-bottom: 10px;
-            border-radius: 4px;
+            height: .72rem;
+            line-height: .46rem;
+            margin-bottom: .20rem;
+            border-radius: .08rem;
             transition: all .2s;
         }
         .container-btn:active{
@@ -62,7 +210,14 @@
 <body>
     <div class="container">
         <button class="container-btn" id="show-toast">Toast</button>
-        <button class="container-btn" id="show-confrim">confrim</button>
+        <button class="container-btn" id="show-icontoast">带图标的Toast</button>
+        <button class="container-btn" id="show-alert">Alert</button>
+        <button class="container-btn" id="show-iconalert">带图标的Alert</button>
+        <button class="container-btn" id="show-closealert">一秒之后主动关闭的Alert</button>
+        <button class="container-btn" id="show-confirm">Confirm</button>
+        <button class="container-btn" id="show-iconconfirm">带图标的Confirm</button>
+        <button class="container-btn" id="show-actionSheet">actionSheet</button>
+        <button class="container-btn" id="show-titleActionSheet">带Title的actionSheet</button>
     </div>
 </body>
 </html>

@@ -1,0 +1,52 @@
+.jdialog-actionsheet{
+  position: fixed;
+  background: #EFEFF4;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform: translate(0, 100%);
+  transition: transform .3s;
+  backface-visibility: hidden;
+  // 标题栏
+  &__title{
+    background-color: #FCFCFD;
+    position: relative;
+    height: 3.016em; // 2.32em
+    padding: 0 0.923;
+    line-height: 1.82;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: #888;
+    &::before{
+      @extend %border-bottom;
+    }
+  }
+
+  // 菜单栏
+  &__menu{
+    background-color: #FCFCFD;
+  }
+
+  // 操作栏
+  &__action{
+    margin-top: 0.27em;
+    background-color: #FCFCFD;
+  }
+
+  // 单栏样式
+  &__cell{
+    position: relative;
+    padding: 0.77em 0;
+    text-align: center;
+    & + & {
+      &::before{
+        @extend %border-top;
+      }
+    }
+    &:active{
+      background-color: #ECECEC;
+    }
+  }
+}

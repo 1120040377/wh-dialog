@@ -1,0 +1,18 @@
+<div class="jdialog <%= className %>">
+  <div class="jdialog__mask"></div>
+  <div class="jdialog-actionsheet">
+    <% if (title) { %>
+      <div class="jdialog-actionsheet__title"><%= title %></div>
+    <% } %>
+    <div class="jdialog-actionsheet__menu">
+      <% for(var i = 0; i < menus.length; i++){ %>
+        <div class="jdialog-actionsheet__cell"><%= menus[i].label %></div>
+      <% } %>
+    </div>
+    <div class="jdialog-actionsheet__action">
+      <% for(var j = 0; j < actions.length; j++){ %>
+        <div class="jdialog-actionsheet__cell"><%= actions[j].label %></div>
+      <% } %>
+    </div>
+  </div>
+</div>

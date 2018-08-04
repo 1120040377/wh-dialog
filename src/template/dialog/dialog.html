@@ -1,0 +1,21 @@
+<div class="jdialog <%= className %>">
+    <div class="jdialog__mask"></div>
+    <div class="jdialog-dialog">
+        <div class="jdialog-dialog__bd">
+          <% if(icon){ %>
+            <div class="jdialog-dialog__bd-title">
+              <span class="iconfont icon-<%= icon['name'] %>"style="font-size: <%= icon['size'] %>; color:<%= icon['color'] %>;"></span>
+            </div>
+          <% } %>
+          <% if(title){ %>
+            <div class="jdialog-dialog__bd-title"><%= title %></div>
+          <% } %>
+          <div class="jdialog-dialog__bd-content"><%= content %></div>
+        </div>
+        <div class="jdialog-dialog__ft">
+            <% for(var i = 0; i < buttons.length; i++){ %>
+            <a href="javascript:;" class="jdialog-dialog__btn jdialog-dialog__btn_<%=buttons[i]['type']%>"><%= buttons[i]['label'] %></a>
+            <% } %>
+        </div>
+    </div>
+</div>

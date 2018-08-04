@@ -1,8 +1,16 @@
 import toast from './toast'
+import dialog from './dialog'
+import confirm from './confirm'
+import alert from './alert'
+import actionSheet from './actionSheet'
 
 export function addMethods (jDialog) {
   const methods = {
-    toast
+    toast,
+    dialog,
+    confirm,
+    alert,
+    actionSheet
   }
 
   Object.keys(methods).forEach(attr => {

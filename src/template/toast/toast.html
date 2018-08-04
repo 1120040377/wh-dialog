@@ -1,6 +1,10 @@
-<div class="jdialog {className}">
+<div class="jdialog <%= className %>">
     <div class="jdialog-toast">
-        <i class="jdialog-icon_toast jdialog-icon-{status}"></i>
-        <p class="jdialog-toast__content">{content}</p>
+        <% if(icon){ %>
+        <div class="jdialog-toast__icon">
+            <i class="iconfont icon-<%= icon['name'] %>"style="font-size: <%= icon['size'] %>; color:<%= icon['color'] %>;"></i>
+        </div>
+        <% } %>
+        <p class="jdialog-toast__content"><%= content %></p>
     </div>
 </div>

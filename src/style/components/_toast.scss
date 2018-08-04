@@ -1,8 +1,7 @@
 .jdialog-toast{
-    display: flex;
-    align-items: center;
-    padding: .4em .8em;
     position: fixed;
+    text-align: center;
+    padding: .4em .8em;
     top: 40%;
     left: 50%;
     color: #FFF;
@@ -11,5 +10,8 @@
     transform: translate(-50%, -50%);
     &__content{
         margin: 0;
+    }
+    &__icon{
+        padding: 0.357em 0;
     }
 }
