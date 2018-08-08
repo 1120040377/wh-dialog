@@ -1,6 +1,8 @@
 const path = require('path')
 
 module.exports = {
+  verbose: true,
+  testURL: "http://localhost/",
   // 识别测试文件, glob -- 简化版的正则  与testMatch二选一
   testMatch: ['**/?(*.)(spec|test).js?(x)'],
 
