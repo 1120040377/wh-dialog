@@ -1,8 +1,8 @@
 {
   "name": "jdialog",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "一个移动端弹窗组件",
-  "main": "index.js",
+  "main": "dist/jdialog.min.js",
   "scripts": {
     "fix": "standard --fix",
     "lint": "standard",
