@@ -22,6 +22,7 @@ let _sington
  *   }, {
  *     label: '确定',
  *     type: 'primary',
+ *     color: '#f66',
  *     onClick: function () { alert('确定') }
  *   }],
  *   icon: {
@@ -50,6 +51,7 @@ function dialog (options = {}) {
     buttons: [{
       label: '确定',
       type: 'primary',
+      color: '',
       onClick: $.noop
     }]
   }, options)

@@ -59,6 +59,7 @@ function actionSheet (menus = [], actions = [], options = {}) {
     actions: actions,
     className: '',
     title: '',
+    titleColor: '',
     onClose: $.noop
   }, options)
 
