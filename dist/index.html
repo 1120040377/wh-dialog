@@ -67,12 +67,20 @@
             document.querySelector('#show-icontoast').addEventListener('click', () => {
                 dialog.toast({
                     className: 'wh',
-                    content: 'wh-666',
+                    content: '请输正确的兑换码',
                     icon: {
                         name: 'baoguo',
                         size: '20px',
                         color: 'rgb(0,200,100)',
-                    }
+                    },
+                })
+            })
+
+            document.querySelector('#show-icontoast1').addEventListener('click', () => {
+                dialog.toast({
+                    className: 'wh',
+                    content: 'SUCCESS',
+                    icon: 'success',
                 })
             })
 
@@ -109,10 +117,20 @@
             })
 
             document.querySelector('#show-confirm').addEventListener('click', () => {
-                dialog.confirm('是否确认',() => {
-                    alert('确认了')
-                }, () => {
-                    alert('取消了')
+                
+                dialog.confirm('是否确认',{
+                    buttons: [
+                        {
+                            label: '取消',
+                            type: 'default',
+                            onClick () {}
+                        },
+                        {
+                            label: '确定',
+                            type: 'primary',
+                            onClick () {}
+                        }
+                    ],
                 })
             })
 
@@ -129,6 +147,7 @@
             document.querySelector('#show-actionSheet').addEventListener('click', () => {
                 dialog.actionSheet([{
                     label: '拍照',
+                    color: '#f0f',
                     onClick: function () {
                         console.log('拍照');
                     }
@@ -213,6 +232,7 @@
     <div class="container">
         <button class="container-btn" id="show-toast">Toast</button>
         <button class="container-btn" id="show-icontoast">带图标的Toast</button>
+        <button class="container-btn" id="show-icontoast1">默认的Toast-SUCCESS</button>
         <button class="container-btn" id="show-alert">Alert</button>
         <button class="container-btn" id="show-iconalert">带图标的Alert</button>
         <button class="container-btn" id="show-closealert">一秒之后主动关闭的Alert</button>
