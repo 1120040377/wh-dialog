@@ -32,12 +32,12 @@ let _sington = false
  *   content: '成功', // 提示信息
  *   duration: 1000, // 显示时长
  *   icon: {
- *     name: success, // 预置图标名称
+ *     name: 'success', // 预置图标名称
  *     color: 'blue', // 颜色 (blue、#ff0、rgba(100, 100, 100, .3)、...)
  *     size: '10px', // 尺寸 (10px、1em、.1rem、...)
  *   }
  * })
- * 
+ *
  * // 带icon的toast
  * jdialog.toast({
  *   className: 'my-class', // 自定义类名
