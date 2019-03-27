@@ -59,7 +59,7 @@
             document.querySelector('#show-toast').addEventListener('click', () => {
                 dialog.toast({
                     className: 'wh',
-                    content: 'wh-666',
+                    content: 'wh',
                     duration: 1000
                 })
             })
@@ -80,8 +80,7 @@
                 dialog.toast({
                     className: 'wh',
                     content: '兑换中请稍等',
-                    icon: 'wait',
-                    duration: 100000
+                    icon: 'wait'
                 })
             })
 
@@ -233,7 +232,7 @@
     <div class="container">
         <button class="container-btn" id="show-toast">Toast</button>
         <button class="container-btn" id="show-icontoast">带图标的Toast</button>
-        <button class="container-btn" id="show-icontoast1">默认的Toast-SUCCESS</button>
+        <button class="container-btn" id="show-icontoast1">默认的Toast-wait</button>
         <button class="container-btn" id="show-alert">Alert</button>
         <button class="container-btn" id="show-iconalert">带图标的Alert</button>
         <button class="container-btn" id="show-closealert">一秒之后主动关闭的Alert</button>
