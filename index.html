@@ -67,12 +67,20 @@
             document.querySelector('#show-icontoast').addEventListener('click', () => {
                 dialog.toast({
                     className: 'wh',
-                    content: 'wh-666',
+                    content: '请输正确的兑换码',
                     icon: {
                         name: 'baoguo',
                         size: '20px',
                         color: 'rgb(0,200,100)',
-                    }
+                    },
+                })
+            })
+
+            document.querySelector('#show-icontoast1').addEventListener('click', () => {
+                dialog.toast({
+                    className: 'wh',
+                    content: 'SUCCESS',
+                    icon: 'success',
                 })
             })
 
@@ -224,6 +232,7 @@
     <div class="container">
         <button class="container-btn" id="show-toast">Toast</button>
         <button class="container-btn" id="show-icontoast">带图标的Toast</button>
+        <button class="container-btn" id="show-icontoast1">默认的Toast-SUCCESS</button>
         <button class="container-btn" id="show-alert">Alert</button>
         <button class="container-btn" id="show-iconalert">带图标的Alert</button>
         <button class="container-btn" id="show-closealert">一秒之后主动关闭的Alert</button>

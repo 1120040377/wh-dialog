@@ -9,10 +9,21 @@
     background: rgba(0, 0, 0, .7);
     border-radius: .3em;
     transform: translate(-50%, -50%);
+    &.icon{
+        box-sizing: border-box;
+        width: 8.57em;
+        height: 8.57em;
+        padding-top: 1.714em;
+    }
     &__content{
         margin: 0;
     }
     &__icon{
         padding: 0.357em 0;
+    }
+    &__img{
+        width: 2.71em;
+        height: 2.71em;
+        margin-bottom: .71em;
     }
 }
