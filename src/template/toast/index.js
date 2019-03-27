@@ -37,6 +37,14 @@ let _sington = false
  *     size: '10px', // 尺寸 (10px、1em、.1rem、...)
  *   }
  * })
+ * 
+ * // 带icon的toast
+ * jdialog.toast({
+ *   className: 'my-class', // 自定义类名
+ *   content: '成功', // 提示信息
+ *   duration: 1000, // 显示时长
+ *   icon: 'success', // 如果icon为字符串，则取默认图标，值允许为 success / fail / wait
+ * })
  */
 function toast (content, options = {}) {
   if (_sington) return _sington

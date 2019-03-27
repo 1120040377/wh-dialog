@@ -1,6 +1,6 @@
 {
   "name": "jdialog",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "一个移动端弹窗组件",
   "main": "dist/jdialog.min.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "lint": "standard",
     "test": "standard && jest --config test/jest.config.js --coverage",
     "test-watch": "jest --watch --config test/jest.config.js",
+    "docs": "node ./build/docs.js",
     "dev": "webpack-dev-server --inline --progress --open --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.prod.config.js"
   },

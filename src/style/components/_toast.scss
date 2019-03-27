@@ -26,4 +26,32 @@
         height: 2.71em;
         margin-bottom: .71em;
     }
+    &__wait{
+        width: 100%;
+        height: 2.71em;
+        margin: 0 auto;
+        margin-bottom: .71em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-item{
+            width: 0.8em;
+            height: 1.4em;
+            background: #FFF;
+            transform: skew(-20deg, 0);
+            transform-origin: left bottom;
+            margin-right: .4em;
+            animation: wait-ani .5s alternate infinite linear;
+            &::last-child{
+            margin: 0;
+            }
+            &:nth-of-type(2){ animation-delay: .15s; }
+            &:nth-of-type(3){ animation-delay: .3s; }
+        }
+    }
+}
+
+@keyframes wait-ani {
+    from { background-color: rgba(255, 255, 255, 1); }
+    to { background-color:rgba(255, 255, 255, 0); }
 }
